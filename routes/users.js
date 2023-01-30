@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
+const dashboard = require('../controllers/dashboardController')
 
 
 // importing user controller
@@ -18,6 +19,8 @@ router.get('/log-in',userController.signIn)
 
 router.post('/create',userController.create)
 
+// route for dashboard
+router.get("/dashboard", dashboard.dashboard);
 
 // use passport as middleware to authenticate
 router.post(

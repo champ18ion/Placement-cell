@@ -85,7 +85,7 @@ module.exports.updateUser = async function (req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = (req, res) => {
-    return res.render("dashboard");
+    return res.redirect("/dashboard");
   };
 
 // clears the cookie

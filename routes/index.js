@@ -3,4 +3,7 @@ const router = express.Router();
 
 // user router
 router.use('/',require('./users'))
+// student routes
+router.use("/student", require("./students"));
+
 module.exports = router;
