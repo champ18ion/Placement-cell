@@ -52,15 +52,27 @@
           </li>
           
         </ul>
-        <!-- Left links -->
-        <div class="d-flex align-items-center">
-            <button type="button" class="btn btn-link px-3 me-2">
-              Login
-            </button>
+        <%if(locals.user){%>
+          <div class="d-flex align-items-center">
+            <a href="/sign-out"><button type="button" class="btn btn-link px-3 me-2">
+              Log-out
+            </button></a>
             <button type="button" class="btn btn-primary me-3">
-              Sign up for free
+              Download report
             </button>
         </div>
+          <%}else{%>
+            <!-- Left links -->
+        <a href="/log-in"><div class="d-flex align-items-center">
+          <button type="button" class="btn btn-link px-3 me-2">
+            Login
+          </button></a> 
+          <button type="button" class="btn btn-primary me-3">
+            Sign up for free
+          </button>
+      </div>
+            <%}%>
+        
       </div>
       <!-- Collapsible wrapper -->
     </div>

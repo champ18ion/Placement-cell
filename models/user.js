@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema(
       }
 );
 
+// validate the password with passed on user password
+userSchema.methods.isValidatePassword = async function (userSentPassword) {
+  return this.password === userSentPassword;
+};
+
 // exporting the schema
 const User = new mongoose.model("User", userSchema);
 

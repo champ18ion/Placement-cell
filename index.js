@@ -12,25 +12,48 @@ app.use(
   })
 );
 
+// used for sessions
+const session = require("express-session");
+const passport = require("passport");
+const passportLocal = require("./config/passport-local");
+const MongoStore = require("connect-mongo");
+
 // set up view engine
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
 
+// mongo-store is used to store session cookies in database
+app.use(
+  session({
+    name: "placement-cell",
+    secret: "secret",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 100,
+    },
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb://127.0.0.1/place_me",
+      autoRemove: "disabled",
+    }),
+      function(err) {
+      console.log(err || "connect-mongodb setup ok");
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// sets the authenticated user in the response
+app.use(passport.setAuthenticatedUser);
+
 // using express routers
 app.use(require("./routes"));
 
-// app.get('/',(req,res)=>{
-//     res.render('home')
-// })
 
-// app.get('/sign-up',(req,res)=>{
-//     res.render('sign-up.ejs')
-// })
-
-// app.get('/log-in',(req,res)=>{
-//     res.render('log-in')
-// })
 
 //  listening to the port 8000;
 app.listen(port, (err) => {
