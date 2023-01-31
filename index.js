@@ -35,7 +35,7 @@ app.use(
     },
     store: MongoStore.create({
       mongoUrl:
-        "mongodb://127.0.0.1/place_me",
+        "mongodb+srv://champ18ion:1V1q1XMHGIyNLfNL@cluster0.jxaps7z.mongodb.net/?retryWrites=true&w=majority",
       autoRemove: "disabled",
     }),
       function(err) {
