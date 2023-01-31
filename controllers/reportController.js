@@ -19,7 +19,7 @@ module.exports.downloadCSVReport = async function (req, res) {
         "," +
         student.email +
         "," +
-        student.placement_status +
+        student.placementStatus +
         "," +
         student.dsa_score +
         "," +
