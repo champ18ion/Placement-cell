@@ -37,7 +37,7 @@ module.exports.create = async function(req,res){
         // check if user exist already
         User.findOne({email}, async (err,user)=>{
             if(err){
-                console.log("error in signin up");
+                console.log("error in signin up",err);
                 return;
             }
             if(!user){
