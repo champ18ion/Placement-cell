@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const dashboard = require('../controllers/dashboardController')
+const reportController = require('../controllers/reportController')
 
 
 // importing user controller
@@ -31,5 +32,10 @@ router.post(
 
 // route for logout button
 router.get("/sign-out", userController.destroySession);
+
+
+// route for downloading csv reports
+router.get("/download", reportController.downloadCSVReport);
+
 
 module.exports = router;
