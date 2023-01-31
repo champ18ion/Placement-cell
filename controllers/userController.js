@@ -1,12 +1,14 @@
 const User = require('../models/user')
 
+// render the Login page
 module.exports.signIn = function(req,res){
     if (req.isAuthenticated()) {
         return res.redirect("/profile");
       }
-    res.render('log-in')
+    return res.render('log-in',{title:'Log-IN | Placement Cell'})
 }
 
+// render the profile page
 module.exports.profile = function (req, res) {
     return res.render("profile", {
       title: "User Profile",
@@ -14,8 +16,12 @@ module.exports.profile = function (req, res) {
     });
   };
 
+// render the Sign-up page
 module.exports.signUp = function(req,res){
-    res.render('sign-up')
+  if (req.isAuthenticated()) {
+    return res.redirect("/dashboard");
+  }
+   return res.render('sign-up',{title:'Sign-UP | Placement Cell'})
 }
 
 // creating a new user
