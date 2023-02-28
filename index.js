@@ -55,7 +55,7 @@ app.use(require("./routes"));
 
 
 
-//  listening to the port 8000;
+//  listening to the port 5000;
 app.listen(port, (err) => {
   if (err) {
     console.log("error in starting the server", err);
