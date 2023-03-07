@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
+// environment variables
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 const db = require('./config/mongoose')
+
 
 app.use(
   bodyParser.urlencoded({
@@ -27,15 +29,14 @@ app.set("views", "./views");
 app.use(
   session({
     name: "placement-cell",
-    secret: "secret",
+    secret: "process.env.SECRET",
     saveUninitialized: false,
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
     store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://champ18ion:1V1q1XMHGIyNLfNL@cluster0.jxaps7z.mongodb.net/?retryWrites=true&w=majority",
+      mongoUrl:process.env.MONGODB_URI,
       autoRemove: "disabled",
     }),
       function(err) {
@@ -61,5 +62,5 @@ app.listen(port, (err) => {
     console.log("error in starting the server", err);
     return;
   }
-  console.log("server listening on port 5000");
+  console.log("server listening on port",port);
 });
