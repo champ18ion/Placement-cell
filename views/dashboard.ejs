@@ -51,15 +51,15 @@
                 class="accordion-button collapsed"
                 type="button"
                 data-mdb-toggle="collapse"
-                data-mdb-target="#flush-collapseOne"
+                data-mdb-target="#collapse<%= student._id %>"
                 aria-expanded="false"
-                aria-controls="flush-collapseOne"
+                aria-controls="collapse<%= student._id %>"
               >
                 <%= student.name %>
               </button>
             </h2>
             <div
-              id="flush-collapseOne"
+              id="collapse<%= student._id %>"
               class="accordion-collapse collapse"
               aria-labelledby="flush-headingOne"
               data-mdb-parent="#accordionFlushExample"
