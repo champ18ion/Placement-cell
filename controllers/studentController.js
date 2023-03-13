@@ -9,7 +9,7 @@ module.exports.addStudent = (req, res) => {
     });
   }
 
-  return res.redirect("/");
+  return res.redirect("/dashboard");
 };
 
 // render edit student page
@@ -63,7 +63,7 @@ module.exports.create = async (req, res) => {
             if (err) {
               return res.redirect("back");
             }
-            return res.redirect("back");
+            return res.redirect("/dashboard");
           }
         );
       } else {

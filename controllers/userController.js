@@ -50,7 +50,7 @@ module.exports.create = async function(req,res){
                     if(err){
                         console.log('error in creating user')
                     }
-                    return res.redirect('/')
+                    return res.redirect('/log-in')
                 })
             }else{
                 console.log("error", "Email already registed!");
@@ -82,7 +82,7 @@ module.exports.updateUser = async function (req, res) {
       user.password = password;
   
       user.save();
-      return res.redirect("back");
+      return res.redirect("/dashboard");
     } catch (err) {
       console.log(err);
       return res.redirect("back");

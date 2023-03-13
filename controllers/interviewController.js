@@ -26,7 +26,7 @@ module.exports.create = async (req, res) => {
         if (err) {
           return res.redirect("back");
         }
-        return res.redirect("back");
+        return res.redirect("/dashboard");
       }
     );
   } catch (err) {
